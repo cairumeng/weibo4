@@ -1,0 +1,42 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+    height: 100%;
+}
+
+footer{
+    border-top: solid 1px #eaeaea;
+    background-color:#f5f5fa ;
+
+    img {
+        vertical-align: top;
+    }
+
+    .footer-copyright {
+        border-top: solid 1px #eaeaea;
+    }
+
+    .footer-logo {
+        .title {
+            display: inline-block;
+        }
+        h3 {
+            font-family: fantasy;
+            vertical-align: text-bottom;
+            margin-left: 30px; font-family: fantasy;
+        } 
+    }
+}
+
+
+.register-form{
+    width:50%;
+    margin: 0 auto;
+}

@@ -9,13 +9,12 @@
 </head>
 
 <body class="d-flex flex-column bd-highlight mb-3">
-    <div class=""></div>
     <div class="container">
-
         <div class="p-2 bd-highlight">
             @include('layouts._header')
         </div>
-        <div class="p-2 bd-highlight">
+        <div class="p-2 bd-highlight mt-5">
+            @include('shared._messages')
             @yield('content')
         </div>
     </div>

@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.default');
-});
+Route::get('/', 'StaticPagesController@index')->name('index');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
 Route::resource('users', 'UsersController');
+Route::get('users/activate/{token}', 'UsersController@activate')->name('users.activate');
+
+Route::get('sessions/create', 'SessionsController@create')->name('sessions.create');
+Route::post('sessions/store', 'SessionsController@store')->name('sessions.store');
+Route::delete('sessions/destroy', 'SessionsController@destroy')->name('sessions.destroy');

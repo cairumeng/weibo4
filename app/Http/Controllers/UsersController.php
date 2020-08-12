@@ -48,7 +48,7 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'avatar' => public_path('images/user.png')
+            'avatar' => asset('images/user.png')
         ]);
         session()->flash('success', 'You have created your account, please check your email to activate it!');
         Notification::send($user, new Activation($user));

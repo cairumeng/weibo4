@@ -10943,3 +10943,12 @@ footer .footer-logo h3 {
   height: 50px;
 }
 
+.edit-avatar {
+  text-align: center;
+}
+
+.edit-avatar img {
+  width: 128px;
+  height: 128px;
+}
+

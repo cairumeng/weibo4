@@ -22,6 +22,10 @@
                 <div class="text-danger">{{$errors->first('password')}}</div>
                 @endif
             </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" name="remember_token" id="remember_token" value="1">
+                <label class="form-check-label" for="remember_token">Remember me</label>
+            </div>
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
 

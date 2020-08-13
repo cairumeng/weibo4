@@ -24,9 +24,8 @@ class SessionsController extends Controller
             'email' => 'email|required',
             'password' => 'required|min:6'
         ]);
-
         $credentials = $request->only(['email', 'password']);
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->remember_token)) {
             session()->flash('success', 'You have logged in!');
             return redirect()->intended(route('index'));
         } else {

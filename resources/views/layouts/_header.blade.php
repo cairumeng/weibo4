@@ -22,8 +22,8 @@
                     <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}" class="header-avatar">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Info edit</a>
+                    <a class="dropdown-item" href="{{ route('users.edit',Auth::user()) }}">User center</a>
                     <form method="POST" action="{{ route('sessions.destroy') }}">
                         @csrf
                         {{method_field('DELETE')}}
@@ -32,10 +32,10 @@
                 </div>
             </li>
             @else
-            <li class="nav-item">
+            <li class="nav-item mt-3">
                 <a class="nav-link" href="{{route('sessions.create')}}">Login</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mt-3">
                 <a class="nav-link" href="{{ route('users.create')}}">Register</a>
             </li>
             @endif

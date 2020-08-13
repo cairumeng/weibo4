@@ -17,6 +17,7 @@ Route::get('/', 'StaticPagesController@index')->name('index');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
+Route::post('users/{user}/upload_avatar', 'UsersController@uploadAvatar')->name('users.uploadAvatar');
 Route::resource('users', 'UsersController');
 Route::get('users/activate/{token}', 'UsersController@activate')->name('users.activate');
 

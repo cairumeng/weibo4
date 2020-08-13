@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Notifications\Activation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
 
 class UsersController extends Controller
@@ -53,5 +54,21 @@ class UsersController extends Controller
         session()->flash('success', 'You have created your account, please check your email to activate it!');
         Notification::send($user, new Activation($user));
         return back();
+    }
+
+    public function edit(User $user)
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function uploadAvatar(User $user, Request $request)
+    {
+        $request->validate(['avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
+        $avatar = $request->avatar;
+        $avatarName = time() . '.' . $avatar->extension();
+        Storage::putFileAS('images/avatars', $avatar, $avatarName);
+        $path = Storage::url('images/avatars/' . $avatarName);
+        $user->update(['avatar' => $path]);
+        return $path;
     }
 }

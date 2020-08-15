@@ -10952,3 +10952,16 @@ footer .footer-logo h3 {
   height: 128px;
 }
 
+.status {
+  margin-top: 50px;
+}
+
+.status-head {
+  margin-bottom: 16px;
+}
+
+.status-head img {
+  width: 64px;
+  height: 64px;
+}
+

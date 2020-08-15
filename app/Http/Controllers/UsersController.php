@@ -58,11 +58,13 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
     public function uploadAvatar(User $user, Request $request)
     {
+        $this->authorize('update', $user);
         $request->validate(['avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048']);
         $avatar = $request->avatar;
         $avatarName = time() . '.' . $avatar->extension();
@@ -70,5 +72,35 @@ class UsersController extends Controller
         $path = Storage::url('images/avatars/' . $avatarName);
         $user->update(['avatar' => $path]);
         return $path;
+    }
+
+    public function update(User $user, Request $request)
+    {
+        $this->authorize('update', $user);
+        if ($request->password) {
+            $request->validate([
+                'name' => 'required|max:56',
+                'password' => 'required|min:6'
+            ]);
+            $user->update([
+                'name' => $request->name,
+                'password' => bcrypt($request->password)
+            ]);
+        } else {
+            $request->validate([
+                'name' => 'required|max:56',
+            ]);
+            $user->update([
+                'name' => $request->name,
+            ]);
+        }
+        session()->flash('success', 'You have updated your information!');
+        return back();
+    }
+
+    public function show(User $user)
+    {
+        $statuses = $user->statuses()->paginate(10);
+        return view('users.show', compact('statuses'));
     }
 }

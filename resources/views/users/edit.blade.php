@@ -12,7 +12,8 @@
             <div id="upload_message"></div>
             <input type="file" id="avatar" hidden>
         </div>
-        <form class="register-form" method="POST" action="{{route('users.store')}}">
+        @can('update',$user)
+        <form class="register-form" method="POST" action="{{route('users.update',$user)}}">
             @csrf
             {{ method_field('PATCH')}}
             <div class="form-group">
@@ -42,6 +43,7 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
+        @endcan
     </div>
 </div>
 @stop

@@ -30,7 +30,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="password_confirmation">Password</label>
+                <label for="password_confirmation">Password Confirmation</label>
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Submit</button>

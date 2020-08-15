@@ -22,8 +22,8 @@
                     <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}" class="header-avatar">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Info edit</a>
-                    <a class="dropdown-item" href="{{ route('users.edit',Auth::user()) }}">User center</a>
+                    <a class="dropdown-item" href="{{ route('users.edit',Auth::user()) }}">Info edit</a>
+                    <a class="dropdown-item" href="{{ route('users.show', Auth::user())}}">User center</a>
                     <form method="POST" action="{{ route('sessions.destroy') }}">
                         @csrf
                         {{method_field('DELETE')}}

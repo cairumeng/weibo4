@@ -17,6 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
+                <a href="{{route('password.request')}}" class="">(Forget your password?)</a>
                 <input type="password" name="password" class="form-control" id="password">
                 @if($errors->has('password'))
                 <div class="text-danger">{{$errors->first('password')}}</div>

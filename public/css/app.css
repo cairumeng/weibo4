@@ -10965,3 +10965,9 @@ footer .footer-logo h3 {
   height: 64px;
 }
 
+.pagination {
+  justify-content: center;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+

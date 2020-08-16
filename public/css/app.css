@@ -10965,6 +10965,11 @@ footer .footer-logo h3 {
   height: 64px;
 }
 
+.follower-avatar img {
+  width: 64px;
+  height: 64px;
+}
+
 .pagination {
   justify-content: center;
   margin-top: 48px;

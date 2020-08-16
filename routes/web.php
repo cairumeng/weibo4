@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StatusesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,11 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 
-Route::post('statuses/{user}', 'StatusesController@store')->name('statuses.store');
+Route::post('statuses', 'StatusesController@store')->name('statuses.store');
+Route::delete('statuses/{status}', 'StatusesController@destroy')->name('statuses.destroy');
+
+Route::get('users/{user}/followers', 'UsersController@followers')->name('users.followers');
+Route::get('users/{user}/followings', 'UsersController@followings')->name('users.followings');
+
+Route::post('followers/{user}', 'FollowersController@store')->name('followers.store');
+Route::delete('followers/{user}', 'FollowersController@destroy')->name('followers.destroy');

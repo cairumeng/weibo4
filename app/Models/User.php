@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -41,5 +42,32 @@ class User extends Authenticatable
     public function statuses()
     {
         return  $this->hasMany(Status::class);
+    }
+
+    public function followers()
+    {
+        return  $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    public function isFollowing(User $user)
+    {
+        $currentUser = Auth::user();
+        return $currentUser->followings->contains($user->id);
+    }
+
+    public function follow(User $user)
+    {
+        $currentUser = Auth::user();
+        $currentUser->followings()->syncWithoutDetaching($user);
+    }
+
+    public function unfollow(User $user)
+    {
+        $currentUser = Auth::user();
+        $currentUser->followings()->detach($user);
     }
 }
